@@ -38,7 +38,7 @@ f.write("첫번째\n두번째\n세번째\n")
 f.close()
 
 # 기존 파일에 첨부
-f = open("demo.txt","wt", encoding="utf-8") # append 는 파일의 끝부분을 찾아서 알아서 감. 
+f = open("demo.txt","a+", encoding="utf-8") # append 는 파일의 끝부분을 찾아서 알아서 감. 
 f.write("다른 내용을 첨부\n")
 f.close()
 
@@ -67,3 +67,5 @@ lst = f.readlines()
 for item in lst : 
     print(item, end="")
 f.close()
+
+
