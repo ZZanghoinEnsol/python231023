@@ -21,7 +21,8 @@ import sqlite3
 
 # 연결객체
 #con = sqlite3.connect(":memory:") 구조 문제가 없다면, 가상 메모리 상 데이터구조가 아닌 실제 파일로서 진행하므로, 아래의 문장을 쓰는게 맞다. 
-con = sqlite3.connect("c:\\work\\test.db")
+con = sqlite3.connect("c:\\work\\sample.db")
+
 #커서객체 생성
 cur = con.cursor()
 #테이블 구조 생성
@@ -47,22 +48,23 @@ cur.execute("select * from PhoneBook;")
 for row in cur :
     print(row)
 
-cur.execute("select * from PhoneBook;")
+
 
 # 현재 데이터들은 모두 메모리에 저장이 되어있으며, fetchone() 혹은 fetchmany(), fetchall()을 쓰게되면 해당메모리에 있는 값 띄우면서 없애버린다.
 # 그 메모리들은 Cursor 기반으로 생성이 되기 때무에, fetch를 쓰더라도 Cursor 로 select 구문 재실행해준다면 메모리에 다시 등록이 되므로 상관이 없다. 
 # fetch 다 털고나서 상단의 for row in cur : print(row) 쓰면 안나오는 부분을 잘 보면 될 것이다. 
-print("---fetchone()---")
-print(cur.fetchone())
-print("---fetchmany(2)---")
-print(cur.fetchmany(2))
 print("---fetchall()---")
+cur.execute("select * from PhoneBook;")
 print(cur.fetchall())
 
 # for row in cur :
 #     print(row)
 
-# 어지간한 DB 언어들은 Commit 처리를 안하면 롤백 되는 것이 기본이다. 
+# 어지간한 DB 언어들은 Commit 처리를 안하면 롤백 되는 것이 기본이다. IDLE 에서 직접 확인 진행했음. 
+# 작업완료 (Commit)
+
+con.commit()
+
 
 
 
