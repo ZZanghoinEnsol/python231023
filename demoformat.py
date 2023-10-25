@@ -37,9 +37,33 @@ f = open("demo.txt","wt",encoding="utf=-8")
 f.write("첫번째\n두번째\n세번째\n")
 f.close()
 
+# 기존 파일에 첨부
+f = open("demo.txt","wt", encoding="utf-8") # append 는 파일의 끝부분을 찾아서 알아서 감. 
+f.write("다른 내용을 첨부\n")
+f.close()
+
 # 파일읽기
 f = open("demo.txt","rt",encoding="utf=-8")
 result=f.read()
 print(result)
-f.close()
 
+
+# read 함수 : 기본적으로 모든 문자를 str로 받아오는데, 파일이 너무 길 경우 readlines()를 써서 list형으로 받아오는게 좋다. 
+# readlines() 를 쓴다고 할 때, 어디까지 읽어올 것인가? → EOF (End of File) 까지 while 반복구문을 진행함. 
+
+# File pointer : 책갈피의 역할. seek()[원하는 위치로 파일포인터 이동] 와 tell()[현재 어디까지 읽었는지 반환함.] 을 많이 쓴다. 
+
+# 처음으로 리셋
+
+f.seek(0)
+print(f.readline(), end="") # print 함수 끝에 \n 이 있는데, 숨겨져있음. 그걸 없애주는 역할.
+print(f.readline(), end="") # print 함수 끝에 \n 이 있는데, 숨겨져있음. 그걸 없애주는 역할.
+
+
+print("readlist 함수")
+
+f.seek(0)
+lst = f.readlines()
+for item in lst : 
+    print(item, end="")
+f.close()
