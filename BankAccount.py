@@ -26,7 +26,7 @@ account1.withdraw(3000)
 
 #account1.__balance=150000000
 
-# print(account1)
+print(account1)
 
 # 읽기
 # print(account1.__balance)
